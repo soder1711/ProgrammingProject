@@ -34,31 +34,21 @@ public class OrientationTask1_4 {
     }
 
     public static void main(String[] args) {
-        OrientationTask1_4 customer1 = new OrientationTask1_4();
-        OrientationTask1_4 customer2 = new OrientationTask1_4();
-
-        LinkedList<OrientationTask1_4> Customers = new LinkedList<>();
-        Customers.add(customer1);
+        LinkedList<OrientationTask1_4> queue = new LinkedList<>();
         Scanner scanner = new Scanner(System.in);
         while (true) {
             System.out.println("Do you want to queue a customer, dequeue them or quit? ");
             String prompt = scanner.nextLine();
             if (prompt.equals("queue")) {
-                System.out.println("Name the customer");
-                String customer = scanner.nextLine();
-                if (customer.equals("customer1")) {
-                    Customers.addFirst(customer1);
-                }
-                else if (customer.equals("customer2")) {
-                    Customers.addFirst(customer2);
-                }
+                OrientationTask1_4 customer = new OrientationTask1_4();
+                queue.addFirst(customer);
             }
             else if (prompt.equals("dequeue")) {
-                if (!Customers.isEmpty()) {
-                    OrientationTask1_4 customer = Customers.getLast();
+                if (!queue.isEmpty()) {
+                    OrientationTask1_4 customer = queue.getLast();
                     customer.setEndTime(System.currentTimeMillis());
                     System.out.println(customer.getId() + " " + customer.calculateTime() + "seconds");
-                    Customers.removeLast();
+                    queue.removeLast();
                 }
             }
             else if (prompt.equals("quit")) {
